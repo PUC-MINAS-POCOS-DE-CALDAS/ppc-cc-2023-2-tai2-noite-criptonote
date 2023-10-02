@@ -2,6 +2,7 @@
 
 
 ## Tela Home
+Tela inicial do aplicativo
 - adicionar nota ([tela WriteNote](WriteNote))
 - ir para arquivos ([tela FileHome](FileHome))
 - importar notas
@@ -10,9 +11,11 @@
 - abrir nota ([tela Code](Code))
 
 ## Modal Code
+Modal que aparece ao abrir uma nota. Ele pede a senha dessa nota e depois vai para a tela em que ela será lida/editada
 - Pega a senha (campo opcional) da nota e vai para [EditNote](EditNote)
 
 ## Tela WriteNote
+Tela para escrever uma nova nota
 - Possui os campos
     - título (obrigatório)
     - senha (opcional)
@@ -25,6 +28,7 @@
     - descartar: descarta a nota e volta para a última tela
 
 ## Tela EditNote
+Tela em que uma nota pode ser lida/editada
 - Ao abrir a tela:
     - Se alguma senha foi fornecida, o texto é descriptografado e exibido
     - Se não tem senha, o texto lido do banco de dados é exibido
@@ -39,15 +43,18 @@
     - descartar: descarta as alterações e volta para a última tela
 
 ## Tela Settings
+Possui algumas opções/informações extra
 - Possui um botão para exportar/compartilhar o banco de dados dos logs
 - Possui uma seção com dados do aplicativo (nome e versão)
 
 ## Tela FileHome
+Tela inicial da criptografia de arquivo
 - Tem uma ação para voltar para a tela anterior
 - Tem um botão para criptografar arquivos (escolhe o arquivo e vai para FileCode com a intenção de criptografar)
 - Tem um botão para descriptografar arquivos (escolhe o arquivo e vai para FileCode com a intenção de descriptografar)
 
 ## Tela FileCode
+Tela para criptografar/descriptografar um arquivo escolhido com a senha fornecida, e algumas opções para "configurar" o processo
 - Tem uma ação para voltar para a tela anterior
 - Tem um campo para mudar o nome do arquivo a ser salvo (obrigatório)
 - Tem um campo de senha (obrigatório)
