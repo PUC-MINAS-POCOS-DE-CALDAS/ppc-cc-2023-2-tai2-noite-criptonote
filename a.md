@@ -6,6 +6,7 @@
 - ir para arquivos ([tela FileHome](FileHome))
 - importar notas
 - exportar notas
+- ir para configurações ([tela Settings](Settings))
 - abrir nota ([tela Code](Code))
 
 ## Modal Code
@@ -27,7 +28,7 @@
 - Ao abrir a tela:
     - Se alguma senha foi fornecida, o texto é descriptografado e exibido
     - Se não tem senha, o texto lido do banco de dados é exibido
-- Possui os campos para edição
+- Possui os campos para edição (o valor inicial é lido do banco de dados ou descriptografado, confirme item anterior)
     - título (obrigatório)
     - texto (obrigatorio)
 - na ação de salvar
@@ -42,16 +43,60 @@
 - Possui uma seção com dados do aplicativo (nome e versão)
 
 ## Tela FileHome
-- Tem um botão para escolher arquivos para criptografar
-- Tem um botão para escolher arquivos para descriptografar
+- Tem uma ação para voltar para a tela anterior
+- Tem um botão para criptografar arquivos (escolhe o arquivo e vai para FileCode com a intenção de criptografar)
+- Tem um botão para descriptografar arquivos (escolhe o arquivo e vai para FileCode com a intenção de descriptografar)
 
 ## Tela FileCode
+- Tem uma ação para voltar para a tela anterior
 - Tem um campo para mudar o nome do arquivo a ser salvo (obrigatório)
 - Tem um campo de senha (obrigatório)
 - Tem um campo para escolher se o arquivo original é apagado depois da criptografia/descriptografia
 - Tem um botão para cancelar a criptografia/descriptografia do arquivo
 - Tem um botão para criptografar/descriptogafar o arquivo
 
+- Na criptografia, a extensão ".cn" é adicionada ao final do arquivo
+- Na descriptogradia, a extensão ".cn" é removida do nome do arquivo, se existir
+- Ao iniciar a criptografia/descriptografia, um alerta aparece dizendo que o processo foi iniciado
+- Durante a criptografia/descriptografia, uma notificação exibe o processo
+- Ao final da criptografia/descriptografia, uma notificação avisa se o processo terminou com sucesso ou erro
+
+
+## Módulo Tema
+Contem os códigos de cores usados para construir a interface do aplicativo e distribuí-las pelos componentes
+
+## Módulo Constantes
+Contem constantes usadas no aplicativo, como:
+- nome
+- versão
+- extensões de arquivos
+- caminho de pastas internas
+- caminho de pastas externas
+- caminho do banco de dados
+
+## Módulo Data
+Contem funções para manipular datas
+- pegar data
+- pegar hora
+- pegar data e hora
+
+## Módulo Armazenamento
+Contem funções para gerenciar o armazenamento interno e externo do aplicativo
+- criar pastas internas do aplicativo
+- criar pastar externas do aplicativo
+- renomear arquivo adicionando um sufixo, caso já exista um arquivo com mesmo nome em determinada pasta
+
+## Módulo Log
+Contem funções para registrar logs
+- info
+- aviso
+- erro
+
+## Módulo Permissão
+Contem funções para requisitar permissões para o sistema
+- notificação
+- ler do armazenamento externo
+- escrever no armazenamento externo
 
 ## Módulo Crypto
 Contem funções de criptografia
@@ -60,3 +105,38 @@ Contem funções de criptografia
 - criptografar arquivo
 - descriptografar arquivo
 
+
+## Banco de dados
+
+### Log
+Criar um banco de dados para armazenar logs com a tabela:
+    - Log
+        - ID
+        - Tipo (info, aviso, erro)
+        - Mensagem
+        - Data e hora
+
+### App
+Criar um banco de dados do aplicativo para armazenar as notas com as tabelas:
+    - Nota
+        - ID
+        - Título
+        - Data de modificação
+        - ID do conteúdo
+    - Conteúdo da nota
+        - ID
+        - texto
+
+### Notas exportadas
+Criar um banco de dados do aplicativo para exportação, que será aberto quando necessário, com as tabelas:
+    - Nota (mesma que acima)
+    - Conteúdo (mesma que acima)
+
+
+## Componente Input
+Criar um component Input
+
+## Componente InputPassword
+Criar um componente Input para ser usado específicamente para senhas.
+- Adicionar um botão para mostrar/esconder a senha ao lado direito do Input
+- Configurar algumas propriedades, que podem ser sobrescritas, para uso com senhas
